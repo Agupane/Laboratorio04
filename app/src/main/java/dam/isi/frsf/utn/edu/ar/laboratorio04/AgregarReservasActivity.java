@@ -41,14 +41,6 @@ public class AgregarReservasActivity extends AppCompatActivity implements View.O
         deptoAReservar = (Departamento) intentDeptoAReservar.getExtras().get("nuevaReserva");
         cargarVariables();
         setearDatosDepartamento();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         bCancelar.setOnClickListener(this);
         bConfirmar.setOnClickListener(this);
     }
@@ -84,8 +76,8 @@ public class AgregarReservasActivity extends AppCompatActivity implements View.O
             {
                 generarReserva();
                 intentListarReservasActivity = new Intent(this, ListarReservasActivity.class);
-                intentListarReservasActivity.putIntegerArrayListExtra("listaReservas",(ArrayList) listaReservas);
-                startActivityForResult(intentListarReservasActivity,1);
+                //intentListarReservasActivity.putIntegerArrayListExtra("listaReservas",(ArrayList) listaReservas);
+                startActivity(intentListarReservasActivity);
                 break;
             }
             case R.id.bCancelar:
@@ -108,7 +100,8 @@ public class AgregarReservasActivity extends AppCompatActivity implements View.O
         nuevaReserva.setFechaInicio(fechaInicio);
         nuevaReserva.setFechaFin(fechaFin);
 
-        listaReservas.add(nuevaReserva);
+        //listaReservas.add(nuevaReserva);
+        ListarReservasActivity.listaReservas.add(nuevaReserva);
         // TODO TERMINAR DE CARGAR LA RESERVA CON LA LOGICA CORRESPONDIENTE
 
         // TODO ASEGURAR QUE LA FECHA DE FIN ES MAYOR A LA DE INICIO
